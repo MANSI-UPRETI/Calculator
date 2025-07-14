@@ -51,14 +51,7 @@ A stylish and interactive calculator built with **HTML**, **CSS**, **JavaScript*
 
 ---
 
-## ✅ To-Do / Improvements
 
-- Add dark/light theme toggle
-- Keyboard support for calculator input
-- Store calculation history in localStorage
-- Animated number transitions
-
----
 
 ---
 
