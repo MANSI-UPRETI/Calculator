@@ -46,7 +46,8 @@ A stylish and interactive calculator built with **HTML**, **CSS**, **JavaScript*
 
 ## 📸 Preview
 
-> _Add a screenshot here if you'd like (calculator UI)_
+<img width="738" height="553" alt="image" src="https://github.com/user-attachments/assets/cd4dd4df-473d-447f-9430-61423090841b" />
+<img width="653" height="548" alt="image" src="https://github.com/user-attachments/assets/eb397fbf-7156-4a73-974a-b5405ed90079" />
 
 ---
 
