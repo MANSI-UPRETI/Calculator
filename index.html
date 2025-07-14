@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modern Scientific Calculator</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="light-theme">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-7 col-sm-10">
+        <!-- Calculator Card -->
+        <div class="card calculator-card glassmorphism shadow-lg" aria-label="Scientific Calculator">
+          <div class="card-body">
+            <!-- Theme & Sound Toggle -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div>
+                <button id="theme-toggle" class="btn btn-outline-secondary" aria-label="Toggle Theme">
+                  <span id="theme-icon" class="bi bi-moon"></span>
+                </button>
+                <button id="sound-toggle" class="btn btn-outline-secondary ms-1" aria-label="Toggle Sound">
+                  <span id="sound-icon" class="bi bi-volume-up"></span>
+                </button>
+              </div>
+              <div>
+                <button id="history-toggle" class="btn btn-outline-primary" aria-label="Toggle History Panel">
+                  <span class="bi bi-clock-history"></span>
+                </button>
+              </div>
+            </div>
+            <!-- Display -->
+            <div class="calculator-display neumorphism mb-2" aria-live="polite" id="display" tabindex="0" aria-label="Calculator Display">0</div>
+            <!-- Memory Indicator -->
+            <div id="memory-indicator" class="mb-2 small text-end text-info visually-hidden" aria-live="polite">M</div>
+            <!-- Calculator Buttons -->
+            <div class="row g-2">
+              <!-- Memory Buttons -->
+              <div class="col-3">
+                <button class="btn btn-light btn-block mem-btn" data-action="MC" aria-label="Memory Clear">MC</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-light btn-block mem-btn" data-action="MR" aria-label="Memory Recall">MR</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-light btn-block mem-btn" data-action="M+" aria-label="Memory Add">M+</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-light btn-block mem-btn" data-action="M-" aria-label="Memory Subtract">M-</button>
+              </div>
+
+              <!-- Number and Operator Buttons -->
+              <div class="col-3">
+                <button class="btn btn-light btn-block" data-action="clear" aria-label="Clear">C</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-light btn-block" data-action="backspace" aria-label="Backspace">&larr;</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-light btn-block" data-action="percent" aria-label="Percent">%</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-primary btn-block" data-action="divide" aria-label="Divide">÷</button>
+              </div>
+
+              <div class="col-3">
+                <button class="btn btn-light btn-block" data-action="7" aria-label="7">7</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-light btn-block" data-action="8" aria-label="8">8</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-light btn-block" data-action="9" aria-label="9">9</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-primary btn-block" data-action="multiply" aria-label="Multiply">×</button>
+              </div>
+
+              <div class="col-3">
+                <button class="btn btn-light btn-block" data-action="4" aria-label="4">4</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-light btn-block" data-action="5" aria-label="5">5</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-light btn-block" data-action="6" aria-label="6">6</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-primary btn-block" data-action="minus" aria-label="Subtract">−</button>
+              </div>
+
+              <div class="col-3">
+                <button class="btn btn-light btn-block" data-action="1" aria-label="1">1</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-light btn-block" data-action="2" aria-label="2">2</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-light btn-block" data-action="3" aria-label="3">3</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-primary btn-block" data-action="plus" aria-label="Add">+</button>
+              </div>
+
+              <div class="col-3">
+                <button class="btn btn-light btn-block" data-action="plus-minus" aria-label="Toggle Plus Minus">+/−</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-light btn-block" data-action="0" aria-label="0">0</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-light btn-block" data-action="decimal" aria-label="Decimal">.</button>
+              </div>
+              <div class="col-3">
+                <button class="btn btn-success btn-block" data-action="equals" aria-label="Equals">=</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- History Panel -->
+        <div id="history-panel" class="card calculator-history glassmorphism shadow position-absolute visually-hidden" aria-label="Calculation History" tabindex="0">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>History</span>
+            <button id="clear-history" class="btn btn-sm btn-outline-danger" aria-label="Clear History">
+              <span class="bi bi-trash"></span>
+            </button>
+          </div>
+          <div class="card-body history-body" id="history-body">
+            <!-- History items appended here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sound Feedback -->
+  <audio id="button-sound" src="click.mp3" preload="auto"></audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.js"></script>
+  <script src="calculator.js"></script>
+</body>
+</html>
